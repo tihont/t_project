@@ -3,11 +3,7 @@
  * Конфигурационный файл, содержащий общие настройки и константы, используемые в проекте
  */
 
-// определение относительного пути к вложенной папке с сайтом
-define ('__ROOT__', dirname(dirname(__FILE__)));
-define('__SITE_ROOT_NAME__', str_replace($_SERVER['DOCUMENT_ROOT'], '',  str_replace('\\', '/'  , __ROOT__)));
-// установка константы, определяющей относительный путь к папке с сайтом
-define('__SITE_ROOT__', '/' . (!empty(__SITE_ROOT_NAME__) ? __SITE_ROOT_NAME__ . '/' : ''));
+define('__SITE_ROOT__', '/t_project/');
 
 // количество карточек на странице фотогалереи
 define('__IMAGES_PER_PAGE__', 12);
