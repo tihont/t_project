@@ -1,0 +1,220 @@
+/* Global */
+html,
+body {
+    height: 100%;
+}
+
+body {
+    --bs-body-font-family: 'Noto Sans', sans-serif;
+    margin: 0;
+}
+
+a,
+a:focus,
+a:hover {
+    color: rgba(22, 22, 22, 1.00);
+}
+
+@media (max-width: 992px) {
+    #navbarCollapseContainer .menu.navbar-nav {
+        align-items: center !important;
+    }
+}
+
+.navbar-top .navbar-brand {
+    margin-bottom: 0;
+    /*color: #000 !important;*/
+    font-size: 1.75rem !important;
+    font-weight: 400 !important;
+}
+
+#logo {
+    color: white;
+}
+
+.navbar-top .nav-link {
+    padding: .25rem 0;
+    font-weight: 700;
+    border-bottom: .25rem solid transparent;
+    /*color: #000 !important;*/
+}
+.navbar-top .nav-link:hover,
+.navbar-top .nav-link:focus {
+}
+
+.nanavbarv-top .nav-link+.nav-link {
+    margin-left: 1rem;
+}
+
+.navbar-top .nav-link.active {
+    text-shadow: none !important;
+    color: #333 !important;
+    /*border-bottom-color: #333;*/
+}
+
+.navbar-top {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* Carousel styling */
+
+#frontpageCarousel {
+    height: 200px;
+}
+
+/* for mobile devices with smaller screens */
+@media (min-width: 320px) {
+    #frontpageCarousel {
+        height: 250px;
+    }
+}
+
+/* for mobile devices with larger screens */
+@media (min-width: 480px) {
+    #frontpageCarousel {
+        height: 300px;
+    }
+}
+
+/* for tablets */
+@media (min-width: 576px) {
+    #frontpageCarousel {
+        height: 350px;
+    }
+}
+
+/* for small laptops */
+@media (min-width: 768px) {
+    #frontpageCarousel {
+        height: 400px;
+    }
+}
+
+/* for laptops and desktops */
+@media (min-width: 992px) {
+    #frontpageCarousel {
+        height: 600px;
+    }
+}
+
+.carousel-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.carousel-item-image-wrapper {
+    height: 200px;
+}
+
+/* for mobile devices with smaller screens */
+@media (min-width: 320px) {
+    .carousel-item-image-wrapper {
+        height: 250px;
+    }
+}
+
+/* for mobile devices with larger screens */
+@media (min-width: 480px) {
+    .carousel-item-image-wrapper {
+        height: 300px;
+    }
+}
+
+/* for tablets */
+@media (min-width: 576px) {
+    .carousel-item-image-wrapper {
+        height: 350px;
+    }
+}
+
+/* for small laptops */
+@media (min-width: 768px) {
+    .carousel-item-image-wrapper {
+        height: 370px;
+    }
+}
+
+/* for laptops and desktops */
+@media (min-width: 992px) {
+    .carousel-item-image-wrapper {
+        height: 570px;
+    }
+}
+
+.slide-item {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.carousel-caption {
+    position: relative;
+    left: 0;
+    bottom: 0;
+    height: 100px;
+}
+
+/* Gallery styling */
+
+.card {
+    padding: .75rem;
+    margin-bottom: 2rem;
+    border: 0;
+    min-width: 280px;
+    flex-basis: 32.6%;
+    flex-grow: 1;
+}
+
+/* for laptops and desktops */
+@media screen and (max-width: 750px) {
+    .card {
+        margin-top: 0px;
+        margin-right: auto;
+        margin-bottom: 2rem;
+        margin-left: auto;
+        flex-basis: 100%;
+    }
+}
+
+.card-image-top {
+    height: 280px;
+}
+
+.card-image-top img {
+    object-fit: cover;
+    cursor: pointer;
+}
+
+.card-title {
+    margin-top: .25rem;
+    margin-bottom: .25rem;
+    min-height: 1.5rem;
+}
+
+.card-text {
+    font-size: .85rem;
+    min-height: .85rem;
+}
+.modal-body .container-fluid {
+    display: flex;
+    justify-content: center;
+}
+.modal-body img {
+    max-height: 100%;
+    max-width: 100%;
+    object-fit: cover;
+}
+
+/* Accordion styling */
+
+.accordion {
+    --bs-accordion-btn-focus-border-color:#dee2e6;
+    --bs-accordion-btn-focus-box-shadow: 0 0 0 0.25rem rgba(73, 80, 87, 0.25);
+    --bs-accordion-btn-active-icon: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23212529'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
+    --bs-accordion-active-color: #212529;
+    --bs-accordion-active-bg: #e9ecef;
+}
