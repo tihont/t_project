@@ -1,14 +1,10 @@
-// глобальная переменная для хранения объекта лайтбокса
 let lightBox = null;
 
-// функция для возврата на один шаг назад в истории браузера
 function goBack() {
     window.history.back();
 }
 
-// обработчик события загрузки страницы в браузер
 document.addEventListener('DOMContentLoaded', function () {
-    // подключение лайтбокса к изображениям в галерее фотографий
     if(document.querySelector('#LightBox')) {
         lightBox = new bootstrap.Modal("#LightBox");
         if (lightBox) {
@@ -45,7 +41,6 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
-    // валидация для формы обратной связи
     var formPointer = document.querySelector('.col-12.needs-validation');
     const frm = document.querySelector('.needs-validation');
     const btn = document.querySelector('.needs-validation button[type="submit"]');
@@ -63,8 +58,7 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    // управление флажком gdpr в форме обратной связи
-    const accept = document.getElementById('acceptGdpr'); // document.querySelector('#acceptGdpr ');
+    const accept = document.getElementById('acceptGdpr'); 
     const gdpr = document.getElementById('gdpr');
     if (accept && gdpr) {
         accept.addEventListener('click', () => {

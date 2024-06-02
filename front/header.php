@@ -1,7 +1,5 @@
 <?php
-/**
- * Шаблон хидера сайта. Содержит меню навигации. Общий для всех страниц.
- */
+
 ?>
 <header id="header" class="container-fluid navbar navbar-expand-lg sticky-top bg-primary text-white">
     <nav class="container flex-wrap py-0 px-3">

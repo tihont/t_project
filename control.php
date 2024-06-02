@@ -1,24 +1,21 @@
 <?php
-/**
- *  Код, обрабатывающий запросы к админке сайта.
- */
 
-$page = 'control'; // для подсветки пункта меню и подключения специфических статических ресурсов
-require_once 'classes/config.php'; // подключение общей конфигурации проекта
-// подключение моделей (классов) для тех таблиц в бд, которые может редактировать администратор через админ-панель
+
+$page = 'control'; 
+require_once 'classes/config.php'; 
+
 require_once 'classes/Contact.php';
 require_once 'classes/Gallery.php';
 require_once 'classes/Specification.php';
 require_once 'classes/Request.php';
 
-// проверка на авторизацию
+
 if (!defined('__IS_ADMIN__') || !__IS_ADMIN__) {
     header('Location: admin/login.php');
     die();
 }
 
-// Функция для загрузки изображения на сервер, создания его превью и возврата имени файла для сохранения в бд. Работает
-// только с изображениями формата jpg/jpeg и png. Требует подключения в php.ini модуля gd.
+
 function uploadImage($new_image)
 {
     $image_name = $new_image['name'];
@@ -48,7 +45,7 @@ function uploadImage($new_image)
                 $originalWidth = imagesx($thumbnail);
                 $originalHeight = imagesy($thumbnail);
 
-                // Определение стороны масштабирования и масштабирование изображения
+                
                 if ($originalWidth > $originalHeight) {
                     $newWidth = 533;
                     $newHeight = intval($originalHeight * $newWidth / $originalWidth);
@@ -59,7 +56,7 @@ function uploadImage($new_image)
                     $thumbnail = imagescale($thumbnail, $newWidth, $newHeight);
                 }
 
-                // Обрезка изображения под формат 533x400
+                
                 $cropWidth = 533;
                 $cropHeight = 400;
                 $cropX = intval(($newWidth - $cropWidth) / 2);
@@ -68,7 +65,7 @@ function uploadImage($new_image)
                 $thumbnail = imagecrop($thumbnail, $cropArray);
 
 
-                // $thumbnail = imagescale($thumbnail, 200, 200);
+                
                 $thumbnail_destination = 'img/preview/' . $image_name_new;
                 if ($image_type === 'image/jpeg') {
                     imagejpeg($thumbnail, $thumbnail_destination);
@@ -90,10 +87,10 @@ function uploadImage($new_image)
     return null;
 }
 
-// обработка запросов на добавление, изменение и удаление контактов, элементов гал��реи и групп характеристик
+
 if (isset($_POST)) {
 
-    // CUD-запросы для контактов (таблица contacts)
+    
     if (isset($_POST['insert_contact'])) {
         $contact = new Contact();
         $contact->addContact($_POST['company_name'], $_POST['address'], $_POST['phone'], $_POST['email']);
@@ -113,7 +110,7 @@ if (isset($_POST)) {
         die();
     }
 
-    // CUD-запросы для галереи (таблица gallery)
+    
     if (isset($_POST['insert_gallery_item'])) {
         $gallery = new Gallery();
         if (isset($_FILES) && isset($_FILES['image']) && $_FILES['image']['size'] > 0) {
@@ -143,7 +140,6 @@ if (isset($_POST)) {
         die();
     }
 
-    // CUD-запросы для групп характеристик (таблица specifications)
     if (isset($_POST['insert_spec_group'])) {
         $spec_group = new Specification();
         $spec_group->addGroup($_POST['group_name'], $_POST['description']);
@@ -163,7 +159,6 @@ if (isset($_POST)) {
         die();
     }
 
-    // DELETE запрос к данным, хранящимся в бд в таблице requests
     if (isset($_POST['remove_request'])) {
         $request = new Request();
         $request->deleteRequest($_POST['request_id']);
@@ -172,7 +167,6 @@ if (isset($_POST)) {
     }
 }
 
-// инициализация моделей и получение из бд списков для заполнения таблиц в админ-панели
 
 $contact = new Contact();
 $contacts = $contact->getContacts();
@@ -187,5 +181,4 @@ $spec_groups = $specifications->getGroups();
 $requests = new Request();
 $requests = $requests->getRequests();
 
-// подключение шаблона
 require_once('front/template.php');

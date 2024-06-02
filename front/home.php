@@ -1,7 +1,5 @@
 <?php
-/**
- * Php-шаблон средней (контентной) секции домашней страницы сайта со слайдером.
- */
+
 ?>
 <main id="main" class="container mt-4 mb-4">
     <section id="content" class="w-100">

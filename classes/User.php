@@ -1,15 +1,12 @@
 <?php
 
-/**
- * Class User
- * Класс для работы с пользователями. Модель данных с операциями CRUD над таблицей users.
- */
+
 class User extends Db
 {
-    // получить информацию о контакте
+    
     public function checkAuth($email, $password)
     {
-        // Получить запись из таблицы users с email = $email
+        
         $query = $this->conn->prepare("SELECT * FROM users WHERE email = :email LIMIT 1;");
         $query->bindParam(':email', $email);
         $query->execute();

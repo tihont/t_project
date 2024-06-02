@@ -1,18 +1,8 @@
 <?php
 
-/**
- * Код, который будет выполняться при обращении к главной странице сайта
- */
-
-$page = 'home'; // для подсветки пункта меню и подключения специфических статических ресурсов
-require_once 'classes/config.php'; // подключение общей конфигурации проекта
-
-// подключение класса (модели) для работы с галереей в бд
+$page = 'home'; 
+require_once 'classes/config.php'; 
 require_once 'classes/Gallery.php';
-
-// получение изображений для слайдера из бд
 $gallery = new Gallery();
 $items = $gallery->getSliderItems();
-
-// подключение шаблона главной страницы
 require_once('front/template.php');

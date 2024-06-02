@@ -1,7 +1,5 @@
 <?php
-/**
- * Php-шаблон средней (контентной) части страницы админ-панели.
- */
+
 ?>
 <?php if (isset($is_admin) && $is_admin === true) : ?>
     <main class="container mt-4 mb-4">

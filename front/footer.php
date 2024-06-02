@@ -1,7 +1,5 @@
 <?php
-/**
- * Php-шаблон футера сайта (универсальный для всех разделов).
- */
+
 ?>
 
 <footer class="navbar navbar-expand-lg bg-light">
