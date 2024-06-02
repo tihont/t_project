@@ -23,6 +23,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && !empty($_POST) && !empty($_POST['na
             unset($_SESSION['csrf_token']);
             $req = new Request();
             $req->addRequest($name, $email, $request);
+            $status = true;
         }
     }
     require_once('front/template.php');
