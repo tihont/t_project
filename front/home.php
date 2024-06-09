@@ -1,5 +1,6 @@
 <?php
 
+$items = $gallery->getSliderItems();
 ?>
 <main id="main" class="container mt-4 mb-4">
     <section id="content" class="w-100">

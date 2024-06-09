@@ -3,7 +3,6 @@
 class Specification extends Db
 {
 
-
     public function getGroups()
     {
         $query = $this->conn->query("SELECT * FROM specifications;");
@@ -11,18 +10,15 @@ class Specification extends Db
         return $groups;
     }
 
-
     public function getGroup($id)
     {
         $query = $this->conn->query("SELECT * FROM specifications WHERE id = :id LIMIT 1;");
         $query->bindParam(':id', $id);
 
         $group = $query->execute();
-//      $group = $query->fetchAll(PDO::FETCH_ASSOC);
         return $group;
     }
 
-    
     public function addGroup($group_name, $description)
     {
         $query = $this->conn->prepare("INSERT INTO specifications (group_name, description) VALUES (:group_name, :description);");
@@ -31,7 +27,6 @@ class Specification extends Db
         $query->execute();
     }
 
-    
     public function updateGroup($id, $group_name, $description)
     {
         $query = $this->conn->prepare("UPDATE specifications SET group_name = :group_name, description = :description WHERE id = :id;");
@@ -41,7 +36,6 @@ class Specification extends Db
         $query->execute();
     }
 
-    
     public function deleteGroup($id)
     {
         $query = $this->conn->prepare("DELETE FROM specifications WHERE id = :id;");

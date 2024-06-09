@@ -34,6 +34,7 @@ if ($page === 'home')  {
 <script src="<?=__SITE_ROOT__?>js/app.js"></script>
 <?php elseif ($page === 'about') : ?>
 <script>
+    // Accordion
     document.addEventListener('DOMContentLoaded', function() {
         var listItems = document.querySelectorAll('#accordionSwitcher button');
         var accordionButtons = document.querySelectorAll('.accordion .accordion-item .accordion-button');
@@ -48,6 +49,7 @@ if ($page === 'home')  {
 </script>
 <?php elseif ($page === 'send' || $page === 'auth') : ?>
 <script>
+    // Back button
     function goBack() {
         window.history.back();
     }

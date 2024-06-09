@@ -1,5 +1,6 @@
 <?php
 
+$items = $gallery->getItems($current_page);
 ?>
 <main class="container mt-4 mb-4">
     <section class="p-5">

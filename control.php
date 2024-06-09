@@ -1,20 +1,17 @@
 <?php
 
 
-$page = 'control'; 
-require_once 'classes/config.php'; 
-
+$page = 'control';
+require_once 'classes/config.php';
 require_once 'classes/Contact.php';
 require_once 'classes/Gallery.php';
 require_once 'classes/Specification.php';
 require_once 'classes/Request.php';
 
-
 if (!defined('__IS_ADMIN__') || !__IS_ADMIN__) {
     header('Location: admin/login.php');
     die();
 }
-
 
 function uploadImage($new_image)
 {
@@ -45,7 +42,6 @@ function uploadImage($new_image)
                 $originalWidth = imagesx($thumbnail);
                 $originalHeight = imagesy($thumbnail);
 
-                
                 if ($originalWidth > $originalHeight) {
                     $newWidth = 533;
                     $newHeight = intval($originalHeight * $newWidth / $originalWidth);
@@ -56,7 +52,6 @@ function uploadImage($new_image)
                     $thumbnail = imagescale($thumbnail, $newWidth, $newHeight);
                 }
 
-                
                 $cropWidth = 533;
                 $cropHeight = 400;
                 $cropX = intval(($newWidth - $cropWidth) / 2);
@@ -65,7 +60,7 @@ function uploadImage($new_image)
                 $thumbnail = imagecrop($thumbnail, $cropArray);
 
 
-                
+                // $thumbnail = imagescale($thumbnail, 200, 200);
                 $thumbnail_destination = 'img/preview/' . $image_name_new;
                 if ($image_type === 'image/jpeg') {
                     imagejpeg($thumbnail, $thumbnail_destination);
@@ -87,10 +82,8 @@ function uploadImage($new_image)
     return null;
 }
 
-
 if (isset($_POST)) {
 
-    
     if (isset($_POST['insert_contact'])) {
         $contact = new Contact();
         $contact->addContact($_POST['company_name'], $_POST['address'], $_POST['phone'], $_POST['email']);
@@ -110,7 +103,6 @@ if (isset($_POST)) {
         die();
     }
 
-    
     if (isset($_POST['insert_gallery_item'])) {
         $gallery = new Gallery();
         if (isset($_FILES) && isset($_FILES['image']) && $_FILES['image']['size'] > 0) {
@@ -169,16 +161,10 @@ if (isset($_POST)) {
 
 
 $contact = new Contact();
-$contacts = $contact->getContacts();
-
 $gallery = new Gallery();
-$gallery_items = $gallery->getAllItems();
-$is_admin = true;
-
 $specifications = new Specification();
-$spec_groups = $specifications->getGroups();
-
 $requests = new Request();
-$requests = $requests->getRequests();
+
+$is_admin = true;
 
 require_once('front/template.php');

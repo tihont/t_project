@@ -1,5 +1,6 @@
 <?php
 
+$groups = $specification->getGroups();
 ?>
 <main class="container mt-4 mb-4">
     <section class="p-5">

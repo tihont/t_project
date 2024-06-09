@@ -1,8 +1,8 @@
 <?php
 
 
-$page = 'gallery'; 
-require_once 'classes/config.php'; 
+$page = 'gallery';
+require_once 'classes/config.php';
 
 require_once 'classes/Gallery.php';
 
@@ -22,14 +22,14 @@ if (isset($_GET['page']) && intval($_GET['page']) > 1) {
     $next_page = intval($_GET['page']) + 1;
     $prev_page = intval($_GET['page']) - 1;
 
-    $items = $gallery->getItems(intval($_GET['page']));
+    $current_page = intval($_GET['page']);
 } else {
     $last_page = (1 >= $count_pages);
 
     $next_page = 2;
     $prev_page = 0;
 
-    $items = $gallery->getItems();
+    $current_page = 1;
 }
 
 require_once('front/template.php');

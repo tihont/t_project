@@ -14,6 +14,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && !empty($_POST) && !empty($_POST['na
     $request = $_POST['request'];
     $request = clean($request);
     $token = $_POST['csrf_token'];
+    $req = new Request();
     if (!isset($_SESSION)) {
         session_start();
     }
@@ -21,8 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && !empty($_POST) && !empty($_POST['na
         $csrf_token = $_SESSION['csrf_token'];
         if ($token === $csrf_token) {
             unset($_SESSION['csrf_token']);
-            $req = new Request();
-            $req->addRequest($name, $email, $request);
+            $last_id = $req->addRequest($name, $email, $request);
             $status = true;
         }
     }

@@ -15,7 +15,7 @@
                 <input type="password" class="form-control" id="password" name="password" required>
             </div>
             <button type="submit" class="btn btn-primary">Login</button>
-            <input type="hidden" name="csrf_token" value="<?php echo $csrf_token; ?>">
+            <input type="hidden" name="csrf_token" value="<?=$csrfTokenHelper->getToken()?>">
         </form>
     </section>
 

@@ -4,18 +4,20 @@
 <main class="container d-flex flex-row mt-4 mb-4">
 
     <section class="p-5 col-6">
+        <h2>Contact information</h2>
+        <?php foreach ($contacts as $contact_data): ?>
+        <article class="mb-4">
+            <h2 class="lead">Address</h2>
 
-        <h2>Contacts</h2>
-        <h2 class="lead">Address</h2>
+            <p><?=$contact_data['address']?></p>
+            <h2 class="lead">Contacts</h2>
 
-        <p><?=$contact_data['address']?></p>
-        <h2 class="lead">Contacts</h2>
+            <p><a href="tel:<?=$contact_data['phone']?>" class=""><?=$contact_data['phone']?></a></p>
 
-        <p><a href="tel:<?=$contact_data['phone']?>" class=""><?=$contact_data['phone']?></a></p>
-
-        <p><a href="mailto:<?=$contact_data['email']?>"><?=$contact_data['email']?></a></p>
-
-
+            <p><a href="mailto:<?=$contact_data['email']?>"><?=$contact_data['email']?></a></p>
+        </article>
+        <hr>
+        <?php endforeach; ?>
     </section>
 
     <section class="p-5 border-start col-6">
@@ -46,7 +48,7 @@
                 <button type="submit" class="btn btn-primary mt-4">Send</button>
             </p>
 
-            <input type="hidden" name="csrf_token" value="<?=$csrf_token?>">
+            <input type="hidden" name="csrf_token" value="<?=$csrfTokenHelper->getToken()?>">
 
         </form>
 

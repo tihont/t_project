@@ -2,6 +2,12 @@
 
 ?>
 <?php if (isset($is_admin) && $is_admin === true) : ?>
+    <?php
+    $contacts = $contact->getContacts();
+    $gallery_items = $gallery->getAllItems();
+    $spec_groups = $specifications->getGroups();
+    $requests = $requests->getRequests();
+    ?>
     <main class="container mt-4 mb-4">
         <section class="p-5">
             <h1 id="pagetitle">Admin area</h1>

@@ -3,10 +3,8 @@
 
 class User extends Db
 {
-    
     public function checkAuth($email, $password)
     {
-        
         $query = $this->conn->prepare("SELECT * FROM users WHERE email = :email LIMIT 1;");
         $query->bindParam(':email', $email);
         $query->execute();

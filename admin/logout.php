@@ -3,22 +3,13 @@
 
 $page = 'logout';
 require_once '../classes/config.php';
+require_once '../classes/CsrfTokenHelper.php';
 
-
-if(!isset($_SESSION)) {
-    session_start();
-    
-    if (!isset($_SESSION['user_id']) || !isset($_COOKIE['user_token'])) {
-        session_destroy();
-        header('Location: login.php');
-        die();
-    }
-}
-
+$csrTokenHelper = new CsrfTokenHelper();
+$csrTokenHelper->deleteToken();
 
 session_destroy();
 setcookie('user_token', '', time() - 3600, '/');
-
 
 header('Location: login.php');
 die();

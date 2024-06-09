@@ -3,15 +3,9 @@
 
 $page = 'login';
 require_once '../classes/config.php';
+require_once '../classes/CsrfTokenHelper.php';
 
-
-$csrf_token = bin2hex(random_bytes(32));
-
-if (!isset($_SESSION)) {
-    session_start();
-}
-
-$_SESSION['csrf_token'] = $csrf_token;
-
+$csrfTokenHelper = new CsrfTokenHelper();
+$csrfTokenHelper->setToken();
 
 require_once('../front/template.php');
